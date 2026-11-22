@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YumCup - Biz bilan Bog'lanish</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    (function() {
+      const theme = localStorage.getItem('yumcup_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .contact-info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: var(--pure-white);
+      border: 1px solid var(--border-pink);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-pink);
+    }
+
+    .info-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--light-pink);
+      color: var(--primary-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .info-detail h4 {
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .info-detail p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .info-detail a {
+      color: var(--primary-pink);
+      font-weight: 600;
+    }
+
+    .contact-form-card {
+      background: var(--pure-white);
+      border: 1px solid var(--border-pink);
+      border-radius: var(--radius-lg);
+      padding: 35px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .map-mock-box {
+      margin-top: 45px;
+      background: var(--pure-white);
+      border: 1px solid var(--border-pink);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .map-header {
+      padding: 16px 24px;
+      background: var(--soft-pink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .map-visual {
+      height: 280px;
+      background: linear-gradient(135deg, #fce4ec 0%, #fff 50%, #f8bbd0 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .map-pin {
+      width: 60px;
+      height: 60px;
+      background: var(--primary-pink);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 0 25px rgba(255, 94, 142, 0.6);
+      animation: pulse 2s infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 992px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🧁</span>
+        <div>
+          YumCup
+          <span>shirinlik & ichimlik</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link">Katalog & Filtr</a>
+        <a href="index.html#specialOffer" class="nav-link">Aksiyalar</a>
+        <a href="index.html#aboutSection" class="nav-link">Afzalliklarimiz</a>
+        <a href="boglanish.html" class="nav-link active">Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link">Tex-yordam</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-btn" onclick="toggleDarkMode()" id="themeToggle" title="Tungi / Kunduzgi rejim">
+          <i class="fa-solid fa-moon"></i>
+          <span class="nav-btn-label">Tungi</span>
+        </button>
+        <button class="cart-btn" onclick="toggleCartDrawer()" title="Xarid savati">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="nav-btn-label">Savat</span>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="hamburger" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <main class="container" style="padding-top: 40px; padding-bottom: 70px;">
+    
+    <div class="section-title-wrap" style="text-align: center;">
+      <span class="section-subtitle">Biz bilan aloqa</span>
+      <h1 class="section-title">Savollaringiz bormi? Yozing!</h1>
+      <p class="section-desc">
+        Maxsus buyurtmalar, to'y va bayram tortlari, katering yoki takliflaringiz bo'yicha biz bilan istalgan vaqtda bog'lanishingiz mumkin.
+      </p>
+    </div>
+
+    <div class="contact-layout">
+      <!-- ALOQA MA'LUMOTLARI -->
+      <div class="contact-info-cards">
+        
+        <div class="info-card">
+          <div class="info-icon">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div class="info-detail">
+            <h4>Telefon raqamlarimiz</h4>
+            <p>
+              Yagona call-markaz: <a href="tel:+998712005588">+998 (71) 200-55-88</a><br>
+              Yetkazib berish xizmati: <a href="tel:+998901234567">+998 (90) 123-45-67</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="info-detail">
+            <h4>Bizning manzilimiz</h4>
+            <p>
+              Toshkent shahri, Chilonzor tumani, 7-mavze, Shirin ko'chasi, 24-uy.<br>
+              Mo'ljal: "Shirinliklar bekati", Korzinka yaqinida.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div class="info-detail">
+            <h4>Ish vaqtimiz</h4>
+            <p>
+              Kafemiz: Dushanba — Yakshanba, 08:00 dan 23:00 gacha.<br>
+              Online yetkazish: Har kuni 24 soat uzluksiz.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <i class="fa-brands fa-telegram"></i>
+          </div>
+          <div class="info-detail">
+            <h4>Ijtimoiy tarmoqlarimiz</h4>
+            <p>
+              Telegram: <a href="#">@YumCup_Official</a><br>
+              Instagram: <a href="#">@yumcup_sweets</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ALOQA FORMASI -->
+      <div class="contact-form-card">
+        <h3 class="font-display" style="font-size: 1.6rem; color: var(--text-dark); margin-bottom: 8px;">
+          Xabar yoki Maxsus Buyurtma Yuborish
+        </h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+          Formani to'ldiring, menejerimiz 10 daqiqa ichida siz bilan bog'lanadi.
+        </p>
+
+        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">Ismingiz *</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Ismingizni kiriting" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telefoningiz *</label>
+              <input type="tel" id="contactPhone" class="form-control" placeholder="+998 90 000-00-00" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Murojaat turi</label>
+            <select id="contactSubject" class="form-control">
+              <option value="buyurtma">🎂 Maxsus tort / desert buyurtmasi</option>
+              <option value="katering">☕ Marosim va tadbirlar uchun katering</option>
+              <option value="tarkib">🧁 Tarkib va allergenlar bo'yicha savol</option>
+              <option value="hamkorlik">🤝 Hamkorlik taklifi</option>
+              <option value="boshqa">💬 Boshqa savollar</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Xabaringiz yoki Buyurtma tafsiloti *</label>
+            <textarea id="contactMessage" class="form-control" rows="4" placeholder="Masalan: 3 kg lik pushti rangli qulupnayli to'y tortiga buyurtma bermoqchiman..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fa-solid fa-paper-plane"></i> Xabarni yuborish
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAP MOCK / XARITA KO'RINIShI -->
+    <div class="map-mock-box">
+      <div class="map-header">
+        <div>
+          <strong style="color: var(--primary-dark); font-size: 1.05rem;">
+            <i class="fa-solid fa-map-location-dot"></i> YumCup Kafelar Shoxobchasi
+          </strong>
+          <span style="display: block; font-size: 0.82rem; color: var(--text-muted);">
+            Toshkent sh., Chilonzor 7-mavze
+          </span>
+        </div>
+        <a href="https://yandex.uz/maps" target="_blank" class="btn btn-sm btn-outline">
+          <i class="fa-solid fa-diamond-turn-right"></i> Yo'nalish olish
+        </a>
+      </div>
+      <div class="map-visual">
+        <div class="map-pin">
+          <i class="fa-solid fa-cake-candles"></i>
+        </div>
+        <h3 class="font-display" style="color: var(--primary-dark); margin-bottom: 4px;">YumCup Shirinliklar Olami</h3>
+        <p style="color: var(--text-dark); font-weight: 500; font-size: 0.95rem;">Bizni ziyorat qiling, xush kelibsiz!</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <div class="footer-logo"><span>🧁</span> YumCup</div>
+        <p class="footer-desc">
+          Oq va pushti nafislikdagi shirinliklar, pishiriqlar va lazzatli ichimliklar kafelari tarmog'i.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Sahifalar</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Bosh sahifa</a></li>
+          <li><a href="filtr.html">Mahsulotlar katalogi</a></li>
+          <li><a href="boglanish.html">Biz bilan bog'lanish</a></li>
+          <li><a href="tex-yordam.html">Texnik yordam & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Bog'lanish</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot"></i> <span>Toshkent sh., Chilonzor 7</span></li>
+          <li><i class="fa-solid fa-phone"></i> <span>+998 (71) 200-55-88</span></li>
+          <li><i class="fa-solid fa-clock"></i> <span>Har kuni: 08:00 — 23:00</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 YumCup Shirinliklar & Ichimliklar Kafelari tarmog'i.
+    </div>
+  </footer>
+
+  <!-- ================= SEVIMLILAR OFFCANVAS DRAWER ================= -->
+  <div class="fav-drawer-overlay" id="favOverlay"></div>
+  <aside class="fav-drawer" id="favDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-heart" style="color: #ff3366;"></i> Sevimlilar (<span class="fav-count">0</span>)</h3>
+      <button class="modal-close" style="position: static;" onclick="toggleFavDrawer()">&times;</button>
+    </div>
+    <div class="cart-items" id="favItems">
+      <!-- Sevimlilar ro'yxati -->
+    </div>
+    <div class="cart-footer">
+      <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="addAllFavoritesToCart()">
+        <i class="fa-solid fa-cart-plus"></i> Barchasini savatga qo'shish
+      </button>
+      <button class="btn btn-outline" style="width: 100%;" onclick="clearFavorites()">
+        <i class="fa-solid fa-trash-can"></i> Ro'yxatni tozalash
+      </button>
+    </div>
+  </aside>
+
+  <!-- MODALLAR & DRAWER -->
+  <div class="modal-overlay" id="detailsModal">
+    <div class="modal-box" id="modalContent"></div>
+  </div>
+
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-basket-shopping text-pink"></i> Savatingiz</h3>
+      <button class="modal-close" style="position: static;" onclick="toggleCartDrawer()">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Jami summa:</span>
+        <strong id="cartTotalPrice">0 so'm</strong>
+      </div>
+      <button class="btn btn-primary" style="width: 100%;" onclick="openCheckoutModal()">
+        <i class="fa-solid fa-credit-card"></i> Buyurtma berish
+      </button>
+    </div>
+  </aside>
+
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCheckoutModal()">&times;</button>
+      <div class="modal-body" style="padding: 30px;">
+        <h2 class="modal-title font-display" style="text-align: center; margin-bottom: 6px;">🧁 Buyurtmani rasmiylashtirish</h2>
+        <form onsubmit="submitOrder(event)">
+          <div class="form-group">
+            <label class="form-label">Ismingiz *</label>
+            <input type="text" id="orderName" class="form-control" required placeholder="Ismingiz">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telefon raqam *</label>
+            <input type="tel" id="orderPhone" class="form-control" required placeholder="+998 90 123 45 67">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Manzil *</label>
+            <input type="text" id="orderAddress" class="form-control" required placeholder="Yetkazish manzili">
+          </div>
+          <div class="form-group">
+            <label class="form-label">To'lov turi</label>
+            <select id="orderPayment" class="form-control">
+              <option value="cash">💵 Qabul qilganda naqd</option>
+              <option value="card">💳 Qabul qilganda karta</option>
+              <option value="payme">📱 Payme</option>
+              <option value="click">📱 Click</option>
+            </select>
+          </div>
+          <div style="background: var(--soft-pink); padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 20px; display: flex; justify-content: space-between;">
+            <span>Jami to'lov:</span>
+            <strong id="checkoutTotalSum" style="color: var(--primary-dark);">0 so'm</strong>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Tasdiqlash</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value;
+      const phone = document.getElementById('contactPhone').value;
+
+      alert(`Hurmatli ${name}! Xabaringiz muvaffaqiyatli qabul qilindi. Operatorlarimiz ${phone} raqamiga tez orada aloqaga chiqishadi.`);
+      document.getElementById('contactForm').reset();
+      showToast("Xabaringiz yuborildi! Rahmat! 💌");
+    }
+  </script>
+</body>
+</html>

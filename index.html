@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YumCup - Nozik Shirinliklar, Pishiriqlar va Ichimliklar</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    (function() {
+      const theme = localStorage.getItem('yumcup_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ================= NAVBAR / HEADER ================= -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🧁</span>
+        <div>
+          YumCup
+          <span>shirinlik & ichimlik</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link active">Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link">Katalog & Filtr</a>
+        <a href="#specialOffer" class="nav-link">Aksiyalar</a>
+        <a href="#aboutSection" class="nav-link">Afzalliklarimiz</a>
+        <a href="boglanish.html" class="nav-link">Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link">Tex-yordam</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-btn" onclick="toggleDarkMode()" id="themeToggle" title="Tungi / Kunduzgi rejim">
+          <i class="fa-solid fa-moon"></i>
+          <span class="nav-btn-label">Tungi</span>
+        </button>
+        <button class="cart-btn" onclick="toggleCartDrawer()" title="Xarid savati">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="nav-btn-label">Savat</span>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="hamburger" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <i class="fa-solid fa-heart text-pink"></i> 100% Tabiiy va Yangi Pishiriqlar
+        </div>
+        <h1 class="hero-title">
+          Har bir luqmada <br><span>shirin baxt</span> ta'mi!
+        </h1>
+        <p class="hero-desc">
+          YumCup kafelarida har kuni erta tongdan tayyorlanadigan nafis tortlar, qarsildoq kruassanlar, pushti kapkeyklar va tetiklantiruvchi xushbo'y ichimliklar. Har bir mahsulotimiz tarkibi toza va tabiiy masalliqlardan iborat!
+        </p>
+        <div class="hero-btns">
+          <a href="#menuSection" class="btn btn-primary">
+            <i class="fa-solid fa-utensils"></i> Menyuni ko'rish
+          </a>
+          <a href="filtr.html" class="btn btn-outline">
+            <i class="fa-solid fa-filter"></i> Masalliq bo'yicha filtr
+          </a>
+        </div>
+        <div class="hero-features">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-truck-fast text-pink"></i></div>
+            <div class="feature-text">
+              <strong>Tez yetkazish</strong>
+              <span>30-45 daqiqada</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-seedling text-pink"></i></div>
+            <div class="feature-text">
+              <strong>Toza tarkib</strong>
+              <span>Kimyoviy qo'shimchalarsiz</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-award text-pink"></i></div>
+            <div class="feature-text">
+              <strong>Oliy sifat</strong>
+              <span>Belgiya shokoladi & sariyog'</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-img-box">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="YumCup Shirinliklari" class="hero-img-main">
+        
+        <div class="floating-badge badge-1">
+          <div class="badge-icon">🧁</div>
+          <div class="badge-info">
+            <h4>Pushti Velvet</h4>
+            <p>Eng ko'p sotilgan xit</p>
+          </div>
+        </div>
+
+        <div class="floating-badge badge-2">
+          <div class="badge-icon">🍓</div>
+          <div class="badge-info">
+            <h4>Tabiiy Qulupnay</h4>
+            <p>Yangi va barra mevalar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MENU & PRODUCTS SECTION ================= -->
+  <section class="section" id="menuSection">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-subtitle">Bizning shirin to'plamimiz</span>
+        <h2 class="section-title">Pishiriqlar va Ichimliklar</h2>
+        <p class="section-desc">
+          Barcha tovarlarimizning narxi, aniq tarkibi (nimadan qilingani) va allergen ma'lumotlari ochiq-oydin ko'rsatilgan.
+        </p>
+      </div>
+
+      <!-- Kategoriya tablari -->
+      <div class="filter-tabs" id="categoryTabs">
+        <button class="filter-btn active" data-cat="all">
+          <i class="fa-solid fa-border-all"></i> Barchasi
+        </button>
+        <button class="filter-btn" data-cat="pishiriq">
+          <i class="fa-solid fa-cake-candles"></i> Shirinlik va Pishiriqlar
+        </button>
+        <button class="filter-btn" data-cat="ichimlik">
+          <i class="fa-solid fa-martini-glass-citrus"></i> Lazzatli Ichimliklar
+        </button>
+        <button class="filter-btn" data-cat="favorites">
+          <i class="fa-solid fa-heart" style="color: #ff3366;"></i> Sevimlilarim (<span class="fav-count">0</span>)
+        </button>
+      </div>
+
+      <!-- Qidiruv va Saralash -->
+      <div class="search-sort-bar">
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" class="search-input" placeholder="Nomi yoki masallig'i bo'yicha qidiring (masalan: shokolad, qulupnay, bodom, matcha)...">
+        </div>
+        <div>
+          <select id="sortSelect" class="sort-select">
+            <option value="default">Saralash: Tavsiya etilgan</option>
+            <option value="price-asc">Narxi: Arzondan qimmatga</option>
+            <option value="price-desc">Narxi: Qimmatdan arzonga</option>
+            <option value="rating-desc">Reyting bo'yicha (Yuqori)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Mahsulotlar to'ri -->
+      <div class="products-grid" id="productsGrid">
+        <!-- JavaScript orqali dinamik yuklanadi -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SPECIAL OFFER (AKSIYA) ================= -->
+  <section class="section special-section" id="specialOffer">
+    <div class="container">
+      <div class="special-card">
+        <div class="special-content">
+          <span class="badge badge-hot">Hafta Aksiyasi - 15% Chegirma</span>
+          <h3 class="font-display">"Pushti Orzu" Sweet & Drink Juftligi</h3>
+          <p>
+            Eng xaridorgir "Qulupnayli Pushti Kapkeyk" va muzdek quyuq "Pushti Qulupnayli Milkshake" to'plami maxsus chegirma bilan!
+          </p>
+          <div class="combo-items">
+            <span class="combo-badge"><i class="fa-solid fa-check text-pink"></i> Qulupnayli Kapkeyk (1 dona)</span>
+            <span class="combo-badge"><i class="fa-solid fa-check text-pink"></i> Qulupnay Milkshake (450ml)</span>
+          </div>
+          <div class="special-price-wrap">
+            <span class="old-price">52 000 so'm</span>
+            <span class="new-price">42 000 so'm</span>
+          </div>
+          <button class="btn btn-primary" onclick="addComboToCart()">
+            <i class="fa-solid fa-bag-shopping"></i> Kombini savatga qo'shish
+          </button>
+        </div>
+        <div class="special-img-box">
+          <img src="https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=700&q=80" alt="Maxsus taklif" class="special-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AFZALLIKLAR ================= -->
+  <section class="section" id="aboutSection">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-subtitle">Nima uchun YumCup?</span>
+        <h2 class="section-title">Bizning Sifat Standartlarimiz</h2>
+        <p class="section-desc">Har bir desertimiz va ichimligimiz mehr bilan, faqat eng sifatli mahsulotlardan tayyorlanadi.</p>
+      </div>
+
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3>100% Tabiiy Tarkib</h3>
+          <p>Sintetik ta'm beruvchilar va sun'iy margarindan foydalanmaymiz. Faqat 82.5% li tabiiy sariyog' va toza sut.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon"><i class="fa-solid fa-shield-heart"></i></div>
+          <h3>Halol va Shaffof</h3>
+          <p>Har bir tovarimizning nimadan qilingani, kaloriyasi va allergen ma'lumotlari to'liq ko'rsatilgan.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <h3>Har Kuni Yangi</h3>
+          <p>Kechki payt qolgan pishiriqlar sotuvga chiqarilmaydi. Har tong 06:00 da pechdan yangi uziladi.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon"><i class="fa-solid fa-heart-circle-bolt"></i></div>
+          <h3>Sevgi Bilan Bezatilgan</h3>
+          <p>Oq va pushti ranglar uyg'unligidagi estetik bezaklar har qanday bayram va kayfiyatingizga fayz kiritadi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MIJOZLAR FIKRLARI (REVIEWS) ================= -->
+  <section class="section section-reviews">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-subtitle">Mijozlarimiz e'tirofi</span>
+        <h2 class="section-title">Shirin Fikrlar va Baholar</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">
+            "Pushti velvet tortining ta'mi juda ajoyib! Ayniqsa tarkibida Mascarpone pishlog'i va Belgiya shokoladi borligi darhol seziladi, umuman yog'li emas, nozik."
+          </p>
+          <div class="reviewer">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Madina" class="reviewer-avatar">
+            <div class="reviewer-info">
+              <h4>Madina Rahimova</h4>
+              <span>Doimiy mijoz</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">
+            "Bodomli kruassan va Pushti Matcha Latte — mening har ertalabki sevimli juftligim! Saytda har bir tovar tarkibi yozilgani menga juda ma'qul keldi."
+          </p>
+          <div class="reviewer">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Jasur" class="reviewer-avatar">
+            <div class="reviewer-info">
+              <h4>Jasur Karimov</h4>
+              <span>Toshkent</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">
+            "Qulupnayli milkshake bolalarimga juda yoqdi. Haqiqiy qulupnay va vanilli muzqaymoqdan tayyorlangan, hech qanday kimyoviy ta'm yo'q. Qoyil!"
+          </p>
+          <div class="reviewer">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Nilufar" class="reviewer-avatar">
+            <div class="reviewer-info">
+              <h4>Nilufar Usmonova</h4>
+              <span>Shirinlik ishqibozi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <div class="footer-logo">
+          <span>🧁</span> YumCup
+        </div>
+        <p class="footer-desc">
+          YumCup — mehr bilan tayyorlanadigan tabiiy shirinliklar, pishiriqlar va tetiklashtiruvchi ichimliklar maskani. Oq va pushti noziklik uyg'unligi.
+        </p>
+        <div style="display: flex; gap: 14px; font-size: 1.2rem;">
+          <a href="#" style="color: var(--light-pink);"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" style="color: var(--light-pink);"><i class="fa-brands fa-telegram"></i></a>
+          <a href="#" style="color: var(--light-pink);"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Sahifalar</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Bosh sahifa</a></li>
+          <li><a href="filtr.html">Mahsulotlar katalogi</a></li>
+          <li><a href="boglanish.html">Biz bilan bog'lanish</a></li>
+          <li><a href="tex-yordam.html">Texnik yordam & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Kategoriyalar</h4>
+        <ul class="footer-links">
+          <li><a href="filtr.html?cat=pishiriq">Tortlar va Chizkeyklar</a></li>
+          <li><a href="filtr.html?cat=pishiriq">Kruassanlar va Vaflilar</a></li>
+          <li><a href="filtr.html?cat=ichimlik">Milkshake va Kokteyllar</a></li>
+          <li><a href="filtr.html?cat=ichimlik">Qahva va Maxsus Choylar</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Bog'lanish</h4>
+        <ul class="footer-contact">
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Toshkent shahri, Chilonzor 7, Shirin ko'chasi, 24-uy</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone"></i>
+            <span>+998 (71) 200-55-88</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-clock"></i>
+            <span>Har kuni: 08:00 — 23:00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 YumCup Shirinliklar & Ichimliklar Kafelari tarmog'i. Barcha huquqlar himoyalangan.
+    </div>
+  </footer>
+
+  <!-- ================= TARIKIBI MODAL (INGREDIENTS DETAILS) ================= -->
+  <div class="modal-overlay" id="detailsModal">
+    <div class="modal-box" id="modalContent">
+      <!-- Dinamik to'ldiriladi -->
+    </div>
+  </div>
+
+  <!-- ================= SEVIMLILAR OFFCANVAS DRAWER ================= -->
+  <div class="fav-drawer-overlay" id="favOverlay"></div>
+  <aside class="fav-drawer" id="favDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-heart" style="color: #ff3366;"></i> Sevimlilar (<span class="fav-count">0</span>)</h3>
+      <button class="modal-close" style="position: static;" onclick="toggleFavDrawer()">&times;</button>
+    </div>
+    <div class="cart-items" id="favItems">
+      <!-- Sevimlilar ro'yxati -->
+    </div>
+    <div class="cart-footer">
+      <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="addAllFavoritesToCart()">
+        <i class="fa-solid fa-cart-plus"></i> Barchasini savatga qo'shish
+      </button>
+      <button class="btn btn-outline" style="width: 100%;" onclick="clearFavorites()">
+        <i class="fa-solid fa-trash-can"></i> Ro'yxatni tozalash
+      </button>
+    </div>
+  </aside>
+
+  <!-- ================= SAVAT OFFCANVAS DRAWER ================= -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-basket-shopping text-pink"></i> Savatingiz</h3>
+      <button class="modal-close" style="position: static;" onclick="toggleCartDrawer()">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Savat elementlari -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Jami summa:</span>
+        <strong id="cartTotalPrice">0 so'm</strong>
+      </div>
+      <button class="btn btn-primary" style="width: 100%;" onclick="openCheckoutModal()">
+        <i class="fa-solid fa-credit-card"></i> Buyurtma berish
+      </button>
+    </div>
+  </aside>
+
+  <!-- ================= CHECKOUT MODAL ================= -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCheckoutModal()">&times;</button>
+      <div class="modal-body" style="padding: 30px;">
+        <h2 class="modal-title font-display" style="text-align: center; margin-bottom: 6px;">
+          🧁 Buyurtmani rasmiylashtirish
+        </h2>
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+          Iltimos, yetkazib berish ma'lumotlarini kiriting.
+        </p>
+
+        <form onsubmit="submitOrder(event)">
+          <div class="form-group">
+            <label class="form-label" for="orderName">Ismingiz *</label>
+            <input type="text" id="orderName" class="form-control" placeholder="Masalan: Nilufar" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="orderPhone">Telefon raqamingiz *</label>
+            <input type="tel" id="orderPhone" class="form-control" placeholder="+998 (90) 123-45-67" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="orderAddress">Yetkazish manzili *</label>
+            <input type="text" id="orderAddress" class="form-control" placeholder="Tuman, ko'cha, uy, xonadon raqami" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="orderPayment">To'lov turi</label>
+            <select id="orderPayment" class="form-control">
+              <option value="cash">💵 Qabul qilganda naqd</option>
+              <option value="card">💳 Qabul qilganda karta orqali</option>
+              <option value="payme">📱 Payme</option>
+              <option value="click">📱 Click</option>
+            </select>
+          </div>
+
+          <div style="background: var(--soft-pink); padding: 14px 18px; border-radius: var(--radius-sm); margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 600;">To'lanishi kerak:</span>
+            <strong id="checkoutTotalSum" style="font-size: 1.3rem; color: var(--primary-dark);">0 so'm</strong>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fa-solid fa-circle-check"></i> Buyurtmani tasdiqlash
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+  <script>
+    // Bosh sahifa uchun mahsulotlarni filtrlash va yuklash mantiqi
+    let currentCategory = 'all';
+    let searchQuery = '';
+    let currentSort = 'default';
+
+    function filterAndDisplayProducts() {
+      const grid = document.getElementById('productsGrid');
+      if (!grid) return;
+
+      let filtered = [...productsData];
+
+      // Kategoriya bo'yicha filtr
+      if (currentCategory === 'favorites') {
+        filtered = filtered.filter(item => favorites.includes(item.id));
+      } else if (currentCategory !== 'all') {
+        filtered = filtered.filter(item => item.category === currentCategory);
+      }
+
+      // Qidiruv bo'yicha (nomi yoki tarkibi)
+      if (searchQuery.trim() !== '') {
+        const query = searchQuery.toLowerCase();
+        filtered = filtered.filter(item => 
+          item.name.toLowerCase().includes(query) ||
+          item.tarkibi.toLowerCase().includes(query) ||
+          item.shortDesc.toLowerCase().includes(query)
+        );
+      }
+
+      // Saralash
+      if (currentSort === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (currentSort === 'price-desc') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (currentSort === 'rating-desc') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; background: white; border-radius: 18px; border: 1px dashed var(--border-pink);">
+            <i class="fa-solid fa-cookie-bite" style="font-size: 3rem; color: var(--border-pink); margin-bottom: 15px; display: block;"></i>
+            <h3>Hech narsa topilmadi</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Qidiruv so'zini o'zgartirib ko'ring yoki barcha kategoriyani tanlang.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => renderProductCard(item)).join('');
+    }
+
+    // Hodisalarni ulash
+    document.addEventListener('DOMContentLoaded', () => {
+      filterAndDisplayProducts();
+
+      // Kategoriya tugmalari
+      const catButtons = document.querySelectorAll('#categoryTabs .filter-btn');
+      catButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          catButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.getAttribute('data-cat');
+          filterAndDisplayProducts();
+        });
+      });
+
+      // Qidiruv
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          filterAndDisplayProducts();
+        });
+      }
+
+      // Saralash
+      const sortSelect = document.getElementById('sortSelect');
+      if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+          currentSort = e.target.value;
+          filterAndDisplayProducts();
+        });
+      }
+    });
+
+    // Aksiya to'plamini savatga qo'shish
+    function addComboToCart() {
+      // Qulupnayli kapkeyk (id: 2) va Qulupnayli milkshake (id: 9)
+      addToCart(2);
+      addToCart(9);
+      showToast("Aksiya: Kapkeyk va Milkshake savatga qo'shildi! 🎁");
+    }
+  </script>
+</body>
+</html>

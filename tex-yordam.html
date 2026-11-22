@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YumCup - Texnik Yordam va Ko'p Beriladigan Savollar (FAQ)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    (function() {
+      const theme = localStorage.getItem('yumcup_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <style>
+    .faq-layout {
+      max-width: 860px;
+      margin: 40px auto 0;
+    }
+
+    .accordion-item {
+      background: var(--pure-white);
+      border: 1px solid var(--border-pink);
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .accordion-header {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      background: var(--pure-white);
+      transition: background 0.2s;
+    }
+
+    .accordion-header:hover {
+      background: var(--soft-pink);
+    }
+
+    .accordion-header h4 {
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .accordion-icon {
+      color: var(--primary-pink);
+      transition: transform 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      background: var(--bg-cream);
+      border-top: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .accordion-item.active .accordion-content {
+      padding: 18px 24px 22px;
+      max-height: 400px;
+      border-top-color: var(--border-pink);
+    }
+
+    .support-box {
+      background: linear-gradient(135deg, #fff0f5 0%, #fff 100%);
+      border: 2px solid var(--border-pink);
+      border-radius: var(--radius-lg);
+      padding: 35px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .support-box h3 {
+      font-size: 1.6rem;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .support-box p {
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto 24px;
+      font-size: 0.95rem;
+    }
+
+    .support-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🧁</span>
+        <div>
+          YumCup
+          <span>shirinlik & ichimlik</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link">Katalog & Filtr</a>
+        <a href="index.html#specialOffer" class="nav-link">Aksiyalar</a>
+        <a href="index.html#aboutSection" class="nav-link">Afzalliklarimiz</a>
+        <a href="boglanish.html" class="nav-link">Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link active">Tex-yordam</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-btn" onclick="toggleDarkMode()" id="themeToggle" title="Tungi / Kunduzgi rejim">
+          <i class="fa-solid fa-moon"></i>
+          <span class="nav-btn-label">Tungi</span>
+        </button>
+        <button class="cart-btn" onclick="toggleCartDrawer()" title="Xarid savati">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="nav-btn-label">Savat</span>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="hamburger" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= FAQ CONTENT ================= -->
+  <main class="container" style="padding-top: 40px; padding-bottom: 70px;">
+    
+    <div class="section-title-wrap">
+      <span class="section-subtitle">Yordam markazi</span>
+      <h1 class="section-title">Ko'p Beriladigan Savollar va Texnik Yordam</h1>
+      <p class="section-desc">
+        Mahsulotlar tarkibi, allergenlar, yetkazib berish va buyurtma berish jarayoni bo'yicha eng muhim ma'lumotlar.
+      </p>
+    </div>
+
+    <div class="faq-layout">
+
+      <!-- SAVOL 1 -->
+      <div class="accordion-item active">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <i class="fa-solid fa-circle-question text-pink"></i>
+            Mahsulotlar nimadan tayyorlanganini (tarkibini) qanday bilishim mumkin?
+          </h4>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          Barcha pishiriqlarimiz va ichimliklarimiz kartasida <strong>"Tarkibi (Nimadan qilingan)"</strong> bloki mavjud. Bundan tashqari, <em>"Batafsil tarkibi va allergenlar"</em> tugmasini bosish orqali to'liq masalliqlar nisbati, ishlatilgan sariyog', shokolad brendi, kaloriya va ogohlantirishlarni ko'rishingiz mumkin.
+        </div>
+      </div>
+
+      <!-- SAVOL 2 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <i class="fa-solid fa-triangle-exclamation text-pink"></i>
+            Allergiya bo'yicha qanday ogohlantirishlar mavjud?
+          </h4>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          Biz mijozlarimiz salomatligiga juda e'tiborlimiz. Har bir mahsulotda sut (laktoza), kleykovina (gluten), tuxum va yong'oq (bodom, pista) borligi alohida belgilangan. Agar laktozaga allergiyangiz bo'lsa, ichimliklarimizni jo'xori (oat) yoki bodom suti asosida tayyorlab berishimiz mumkin.
+        </div>
+      </div>
+
+      <!-- SAVOL 3 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <i class="fa-solid fa-truck-fast text-pink"></i>
+            Yetkazib berish qancha vaqt oladi va narxi qancha?
+          </h4>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          Toshkent shahri bo'ylab yetkazib berish muddati 30 daqiqadan 45 daqiqagacha. Standart yetkazib berish narxi 15 000 so'm. Agar buyurtmangiz summasi 150 000 so'mdan oshsa — yetkazib berish mutlaqo <strong>bepul</strong> amalga oshiriladi!
+        </div>
+      </div>
+
+      <!-- SAVOL 4 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <i class="fa-solid fa-wallet text-pink"></i>
+            Qanday to'lov usullari qabul qilinadi?
+          </h4>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          Siz buyurtmangizni o'zingizga qulay usulda to'lashingiz mumkin:
+          <ul>
+            <li>• Kuryer yetkazganda naqd pul shaklida</li>
+            <li>• Kuryer terminali orqali UzCard / Humo / Visa karta bilan</li>
+            <li>• Payme yoki Click ilovalari orqali tezkor to'lov</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SAVOL 5 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <i class="fa-solid fa-temperature-arrow-down text-pink"></i>
+            Mahsulotlarni saqlash muddati va sharoiti qanday?
+          </h4>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          Tortlar va kremli kapkeyklar +2°C dan +6°C gacha bo'lgan haroratda sovutgichda 48 soat davomida saqlanishi kerak. Bodomli kruassanlar va pechenyelar xona haroratida 24 soatgacha o'zining qarsildoq ta'mini saqlab qoladi. Ichimliklar esa tayyorlangan zahoti yangi holida ichish uchun mo'ljallangan.
+        </div>
+      </div>
+
+      <!-- SAVOL 6 -->
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>
+            <i class="fa-solid fa-cake-candles text-pink"></i>
+            Maxsus buyurtma (to'y yoki tug'ilgan kun tortlari) uchun qancha oldin murojaat qilish kerak?
+          </h4>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          Murakkab dizayndagi yoki ko'p qavatli bayram tortlari uchun kamida 24-48 soat oldin <a href="boglanish.html" class="text-pink">Bog'lanish sahifasi</a> orqali yoki telefon orqali buyurtma berishingizni tavsiya qilamiz.
+        </div>
+      </div>
+
+      <!-- YORDAM BLOKI -->
+      <div class="support-box">
+        <div style="font-size: 2.8rem; margin-bottom: 10px;">💬</div>
+        <h3 class="font-display">Savolingizga javob topmadingizmi?</h3>
+        <p>Bizning do'stona qo'llab-quvvatlash jamoamiz har kuni 24 soat davomida sizga yordam berishga tayyor!</p>
+        <div class="support-actions">
+          <a href="tel:+998712005588" class="btn btn-primary">
+            <i class="fa-solid fa-phone"></i> +998 (71) 200-55-88
+          </a>
+          <a href="https://t.me/" target="_blank" class="btn btn-outline">
+            <i class="fa-brands fa-telegram"></i> Telegramda yozish
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <div class="footer-logo"><span>🧁</span> YumCup</div>
+        <p class="footer-desc">
+          Oq va pushti nafislikdagi shirinliklar, pishiriqlar va lazzatli ichimliklar kafelari tarmog'i.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Sahifalar</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Bosh sahifa</a></li>
+          <li><a href="filtr.html">Mahsulotlar katalogi</a></li>
+          <li><a href="boglanish.html">Biz bilan bog'lanish</a></li>
+          <li><a href="tex-yordam.html">Texnik yordam & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Bog'lanish</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot"></i> <span>Toshkent sh., Chilonzor 7</span></li>
+          <li><i class="fa-solid fa-phone"></i> <span>+998 (71) 200-55-88</span></li>
+          <li><i class="fa-solid fa-clock"></i> <span>Har kuni: 08:00 — 23:00</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 YumCup Shirinliklar & Ichimliklar Kafelari tarmog'i.
+    </div>
+  </footer>
+
+  <!-- ================= SEVIMLILAR OFFCANVAS DRAWER ================= -->
+  <div class="fav-drawer-overlay" id="favOverlay"></div>
+  <aside class="fav-drawer" id="favDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-heart" style="color: #ff3366;"></i> Sevimlilar (<span class="fav-count">0</span>)</h3>
+      <button class="modal-close" style="position: static;" onclick="toggleFavDrawer()">&times;</button>
+    </div>
+    <div class="cart-items" id="favItems">
+      <!-- Sevimlilar ro'yxati -->
+    </div>
+    <div class="cart-footer">
+      <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="addAllFavoritesToCart()">
+        <i class="fa-solid fa-cart-plus"></i> Barchasini savatga qo'shish
+      </button>
+      <button class="btn btn-outline" style="width: 100%;" onclick="clearFavorites()">
+        <i class="fa-solid fa-trash-can"></i> Ro'yxatni tozalash
+      </button>
+    </div>
+  </aside>
+
+  <!-- MODALLAR & DRAWER -->
+  <div class="modal-overlay" id="detailsModal">
+    <div class="modal-box" id="modalContent"></div>
+  </div>
+
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-basket-shopping text-pink"></i> Savatingiz</h3>
+      <button class="modal-close" style="position: static;" onclick="toggleCartDrawer()">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Jami summa:</span>
+        <strong id="cartTotalPrice">0 so'm</strong>
+      </div>
+      <button class="btn btn-primary" style="width: 100%;" onclick="openCheckoutModal()">
+        <i class="fa-solid fa-credit-card"></i> Buyurtma berish
+      </button>
+    </div>
+  </aside>
+
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCheckoutModal()">&times;</button>
+      <div class="modal-body" style="padding: 30px;">
+        <h2 class="modal-title font-display" style="text-align: center; margin-bottom: 6px;">🧁 Buyurtmani rasmiylashtirish</h2>
+        <form onsubmit="submitOrder(event)">
+          <div class="form-group">
+            <label class="form-label">Ismingiz *</label>
+            <input type="text" id="orderName" class="form-control" required placeholder="Ismingiz">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telefon raqam *</label>
+            <input type="tel" id="orderPhone" class="form-control" required placeholder="+998 90 123 45 67">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Manzil *</label>
+            <input type="text" id="orderAddress" class="form-control" required placeholder="Yetkazish manzili">
+          </div>
+          <div class="form-group">
+            <label class="form-label">To'lov turi</label>
+            <select id="orderPayment" class="form-control">
+              <option value="cash">💵 Qabul qilganda naqd</option>
+              <option value="card">💳 Qabul qilganda karta</option>
+              <option value="payme">📱 Payme</option>
+              <option value="click">📱 Click</option>
+            </select>
+          </div>
+          <div style="background: var(--soft-pink); padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 20px; display: flex; justify-content: space-between;">
+            <span>Jami to'lov:</span>
+            <strong id="checkoutTotalSum" style="color: var(--primary-dark);">0 so'm</strong>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Tasdiqlash</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleAccordion(headerEl) {
+      const item = headerEl.parentElement;
+      const isActive = item.classList.contains('active');
+
+      // Boshqalarini yopish
+      document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
+
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
